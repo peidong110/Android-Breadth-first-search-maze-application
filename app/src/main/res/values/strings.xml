@@ -1,10 +1,12 @@
 <resources>
     <string name="app_name">assignment2</string>
-    <string name="button">Solve</string>
+    <string name="solve">Solve</string>
     <string name="start">S</string>
     <string name="destination">D</string>
     <string name="empty">E</string>
     <string name="wall">W</string>
     <string name="path">P</string>
+    <string name="restart">Restart In Progress</string>
+    <string name="restartMessage">Board Will be reset in 500ms. </string>
     <string name="attempted">A</string>
 </resources>
