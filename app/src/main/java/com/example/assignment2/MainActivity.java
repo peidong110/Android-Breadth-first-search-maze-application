@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     int[][]  matrix = new int[NUM_ROWS][NUM_COLS];
     int flg;
     private Button solveMazeButton;
+    private Button resetButton;
     boolean status;
     ArrayList<Character> a;
     //private Maze model; //not needed for tutorial
@@ -63,20 +64,16 @@ public class MainActivity extends AppCompatActivity {
                 k +=1;
                 System.out.println("K is: "+k+" and it's passed in to the function");
                 boolean b = singleMove(k);
-//                    sleep(1);
                 if (!b)
                     break;
                 }
-            System.out.println("WHILE LOOP ENDED");
 
             return false;
         }
         public void onPostExecute(Boolean result){
             super.onPostExecute(result);
-            solveMazeButton.setText(R.string.solve);
-            buttonState(true);
-            reset();
-            status = true;
+            Toast t = Toast.makeText(MainActivity.this, "Solved!!!", Toast.LENGTH_SHORT);
+            t.show();
 
         }
 
@@ -277,7 +274,16 @@ public class MainActivity extends AppCompatActivity {
         buttonListener();
 
         status = true;
+        resetButton = (Button) findViewById(R.id.button_reset);
         solveMazeButton = (Button) findViewById(R.id.button_solve_maze);
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                buttonState(true);
+                reset();
+                status = true;
+            }
+        });
         solveMazeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
