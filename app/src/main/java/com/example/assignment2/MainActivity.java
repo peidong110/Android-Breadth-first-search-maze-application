@@ -22,8 +22,8 @@ import java.util.Arrays;
 public class MainActivity extends AppCompatActivity {
 
     // Scale of the game (number of rows and columns)
-    private  static final int NUM_ROWS = 10;
-    private  static final int NUM_COLS = 10;
+    private  static final int NUM_ROWS = 12;
+    private  static final int NUM_COLS = 12;
     Button[][] buttons = new Button[NUM_ROWS][NUM_COLS];
     char[][]  keys = new char[NUM_ROWS][NUM_COLS];
     int[][]  matrix = new int[NUM_ROWS][NUM_COLS];
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 if (!b)
                     break;
                 }
-
+            System.out.println("WHILE LOOP ENDED");
             return false;
         }
         public void onPostExecute(Boolean result){
@@ -88,8 +88,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void initArr(){
-        for (int i = 0;i<10;i++){
-            for(int j =0;j<10;j++){
+        for (int i = 0;i<NUM_ROWS;i++){
+            for(int j =0;j<NUM_COLS;j++){
                 keys[i][j] = 'E';
                 matrix[i][j] = 0;
             }
@@ -203,8 +203,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void dis(int[][] arr){
-        for (int i =0;i< 10;i++){
-            for(int j =0;j<10;j ++){
+        for (int i =0;i< NUM_ROWS;i++){
+            for(int j =0;j<NUM_COLS;j ++){
                 System.out.print(arr[i][j]+" ");
             }
             System.out.println();
@@ -212,8 +212,8 @@ public class MainActivity extends AppCompatActivity {
     }
     public boolean singleMove(int round){
         boolean flg1 = false;
-        for (int i = 0;i<10;i++){
-            for (int j =0;j<10;j++){
+        for (int i = 0;i<NUM_ROWS;i++){
+            for (int j =0;j<NUM_COLS;j++){
                 if (matrix[i][j] == round){
                     System.out.println("ROUND IS: "+ round+" Matrix[i][j] is "+matrix[i][j]);
                     flg1 = true;
@@ -232,7 +232,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                         sleep(200);
                     }
-                    if (i < 9 && matrix[i+1][j] == 0 && keys[i+1][j] != 'W' ){
+                    if (i < NUM_ROWS-1 && matrix[i+1][j] == 0 && keys[i+1][j] != 'W' ){
                         matrix[i+1][j] = round+1;
                         if (keys[i+1][j] == 'E'){
                             buttons[i+1][j].setBackgroundColor(Color.GREEN);
@@ -240,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
                         sleep(200);
 
                     }
-                    if (j < 9 && matrix[i][j+1] ==0 &&  keys[i][j+1] != 'W' ){
+                    if (j < NUM_COLS-1 && matrix[i][j+1] ==0 &&  keys[i][j+1] != 'W' ){
                         matrix[i][j+1] = round+1;
                         if (keys[i][j+1] == 'E')
                         {
